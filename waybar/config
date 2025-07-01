@@ -1,0 +1,149 @@
+{
+    "layer": "top",
+    "position": "top",
+    "spacing": 10,
+
+    "modules-left": ["custom/space", "hyprland/window"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["tray", "group/connectivity", "group/hardware", "wireplumber", "custom/updates", "clock"],
+
+    "custom/space" : {
+        "format": " ",
+    },
+
+    "custom/updates" : {
+        "exec-if": "~/.config/waybar/scripts/checkupdates.sh -b",
+        "exec": "~/.config/waybar/scripts/checkupdates.sh -j",
+        "return-type": "json",
+        "format": "{icon}",
+        "format-icons": [
+            "<span color='#eeeeee'>󰚰 </span>", // white
+            "<span color='#69ff94'>󰚰 </span>", // green
+            "<span color='#2aa9ff'>󰚰 </span>", // blue
+            "<span color='#2aa9ff'>󰚰 </span>", // blue
+            "<span color='#ffffa5'>󰚰 </span>", // yellow
+            "<span color='#ffffa5'>󰚰 </span>", // yellow
+            "<span color='#ff9977'>󰚰 </span>", // orange
+            "<span color='#ff9977'>󰚰 </span>", // orange
+            "<span color='#dd532e'>󰚰 </span>", // red
+            "<span color='#dd532e'>󰚰 </span>"  // red
+        ],
+        "interval": 3600,
+        "on-click": "~/.config/waybar/scripts/updatesystem.sh"
+    },
+
+    "hyprland/window": {
+        "format": "{title}",
+        "tooltip-format": "{title}",
+        "icon": true,
+        "separate-outputs": true,
+        "icon-size": 20,
+        "max-length": 50,
+    },
+    
+    "hyprland/workspaces": {
+      "on-scroll-up": "hyprctl dispatch workspace +1",
+      "on-scroll-down": "hyprctl dispatch workspace -1",
+      "format": " {id} {windows}",
+      "format-window-separator": " ",
+      "window-rewrite-default": " ",
+      "window-rewrite": {
+        "discord": "  ",
+        "title<.*nvim.*>": " ",
+        "chrome": " ",
+        "title<.*github.*>": " ",
+        "kitty": " ",
+        "clion": " ",
+        "Microsoft Teams": "󰊻 ",
+        "Telegram": " ",
+        "Dolphin": " ",
+        "Chromium-browser": "󱖑 ",
+        "Spotify": " ",
+      },
+    },
+
+     
+    "wireplumber": {
+        "format": "{icon}",
+        "format-icons": [
+            "\uf026",
+            "\uf027",
+            "\uf028"
+        ],
+        "format-muted": "\ueb24",
+        "tooltip-format": "{node_name}: {volume}%",
+        "on-click": "pavucontrol",
+        "max-volume": 100,
+        "scroll-step": 5
+    },
+
+    "clock": {
+        "format": "{:%H:%M %d/%m} ",
+        "tooltip-format": "{:%A, %d %B}"
+    },
+
+    "group/hardware": {
+        "orientation": "inherit",
+        "modules": [
+            "cpu",
+            "memory"
+        ]
+    },
+
+    "cpu": {
+        "on-click": "kitty htop",
+        "interval": 5,
+        "format": "{icon} ",
+        "format-icons": [
+            "<span color='#eeeeee'> </span>", // white
+            "<span color='#69ff94'> </span>", // green
+            "<span color='#2aa9ff'> </span>", // blue
+            "<span color='#ffffa5'> </span>", // yellow
+            "<span color='#ffffa5'> </span>", // yellow
+            "<span color='#ff9977'> </span>", // orange
+            "<span color='#dd532e'> </span>"  // red
+        ],
+    },
+
+    "memory": {
+      "interval": 10,
+      "format": " ",
+      "tooltip-format": "{used:0.1f}GiB/{total:0.1f}GiB ({percentage}%)"
+    },
+
+    "group/connectivity": {
+        "orientation": "inherit",
+        "modules": [
+            "network",
+            "bluetooth"
+        ]
+    },
+
+    "network": {
+        "format": "",
+        "on-click": "kitty nmtui",
+        "format-disconnected": "\udb83\udc9c ",
+        "format-ethernet": "\udb83\udc9d ",
+        "format-wifi": "{icon} ",
+        "format-icons": ["\udb82\udd2f", "\udb82\udd1f", "\udb82\udd22", "\udb82\udd25", "\udb82\udd28"],
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}: {bandwidthDownBytes}",
+        "tooltip-format-disconnected": "Disconnected",
+    },
+
+    "bluetooth": {
+        "on-click": "kitty bluetui",
+        "format": "\udb80\udcaf",
+        "format-disabled": "\udb80\udcb2",
+        "format-connected": "\udb80\udcb1",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+
+    "tray": {
+        "show-passive-items": true,
+        "icon-size": 16,
+        "spacing": 16
+    }
+}

@@ -1,0 +1,41 @@
+@define-color bar_foreground #eeeeee;
+@define-color bar_foreground_active #ffbf00;
+@define-color bar_foreground_inactive #9a9a9a;
+@define-color bar_background rgba(0x25,0x25,0x25,0.8);
+
+* {
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+#waybar {
+    color: @bar_foreground;
+    background: @bar_background;
+}
+
+#workspaces button {
+    color: @bar_foreground;
+    padding-left: 0.5em;
+}
+
+#workspaces button.empty {
+    color: @bar_foreground_inactive;
+}
+
+#workspaces button.active {
+    color: @bar_foreground_active;
+}
+
+#memory,
+#cpu,
+#wireplumber,
+#battery,
+#backlight,
+#language,
+#network,
+#bluetooth,
+#tray {
+    padding-right: 0.5em 
+}
