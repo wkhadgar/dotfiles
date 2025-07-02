@@ -1,9 +1,13 @@
 #!/bin/bash
 
-pending=$(pacman -Qu | wc -l)
-max=$(pacman -Q | wc -l)
+CRITICAL_UPDATE_AMOUNT=25
+
+pending=$(checkupdates | wc -l)
+#max=$(pacman -Q | wc -l)
+max=$CRITICAL_UPDATE_AMOUNT
 
 percentage=$((100 * pending / max))
+percentage=$((percentage > 100 ? 100 : percentage))
 class="class"
 
 if [ "$pending" -gt 0 ]; then
@@ -16,8 +20,10 @@ while getopts "bj" opt; do
   case $opt in
   b)
     if [ "$pending" -gt 0 ]; then
+      echo "true"
       exit 0
     else
+      echo "false"
       exit 1
     fi
     ;;
