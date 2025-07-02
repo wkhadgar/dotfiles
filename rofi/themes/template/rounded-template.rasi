@@ -16,6 +16,10 @@ configuration {
     drun {
         display-name: "󰮫 ";
     }
+
+    dmenu {
+        display-name: " "; 
+    }
 }
 
 window {
@@ -29,6 +33,8 @@ window {
 
 mainbox {
     padding:    12px;
+    orientation: vertical;
+    children:    [ inputbar, listview, message ];
 }
 
 inputbar {
@@ -98,4 +104,6 @@ element-icon {
 
 element-text {
     text-color: inherit;
+    padding: 3px 0px;
+    vertical-align: 0.5;
 }
