@@ -2,18 +2,33 @@
 
 do_update=$(~/.config/waybar/scripts/checkupdates.sh)
 
+notif_txt="\nNão há atualizações pendentes..."
+
 if [ "$do_update" -gt 0 ]; then
   echo "Atualizações encontradas para:"
   echo ""
   checkupdates
   echo ""
-  echo "Insira a senha para prosseguir com as atualizações..."
-  sudo pacman -Syu
-  echo ""
-  sleep 5
-  exit 0
+  read -r -p "Deseja prosseguir com as atualizações? [Y/n]" update_answer
+  case "$update_answer" in
+  [nN]*)
+    notif_txt="Atualização cancelada..."
+    ;;
+  [yY]* | "")
+    sudo pacman -Syu
+    up_to_date=$?
+    echo ""
+    if [ "$up_to_date" -gt 0 ]; then
+      notif_txt="Não foi possível atualizar com sucesso..."
+    else
+      notif_txt="Sistema atualizado com sucesso!"
+    fi
+    ;;
+  *)
+    exit 1
+    ;;
+  esac
 fi
 
-echo "Não há atualizações pendentes..."
-sleep 2
+notify-send Atualizações "\n$notif_txt"
 exit 0

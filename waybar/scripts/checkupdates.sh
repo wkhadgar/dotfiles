@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 CRITICAL_UPDATE_AMOUNT=25
 

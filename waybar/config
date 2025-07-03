@@ -1,229 +1,230 @@
 {
-    "layer": "top",
-    "position": "top",
-    "spacing": 10,
+  "layer": "top",
+  "position": "top",
+  "spacing": 10,
 
-    "modules-left": ["custom/space", "mpris", ],
-    "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["tray", "custom/updates", "wireplumber", "group/connectivity", "group/hardware", "clock", "group/group-power"],
+  "modules-left": ["custom/space", "mpris", ],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["tray", "custom/updates", "wireplumber", "group/connectivity", "group/hardware", "clock", "group/group-power"],
 
-    "custom/space" : {
-        "format": " ",
-    },
+  "custom/space" : {
+    "format": " ",
+  },
 
-    "custom/updates" : {
-        "exec": "~/.config/waybar/scripts/checkupdates.sh -j",
-        "return-type": "json",
-        "format": "{icon}",
-        "format-icons": [
-            "<span color='#ffffff'>󰚰 </span>", // 1. Branco (Normal)
-            "<span color='#e8f5e9'>󰚰 </span>", // 2. Verde Muito Claro (Situação Estável)
-            "<span color='#c8e6c9'>󰚰 </span>", // 3. Verde Pálido (Leve Alteração)
-            "<span color='#a5d6a7'>󰚰 </span>", // 4. Verde Suave (Primeiro Nível de Atenção)
-            "<span color='#81c784'>󰚰 </span>", // 5. Verde (Atenção)
-            "<span color='#bbdefb'>󰚰 </span>", // 6. Azul Muito Claro (Informativo)
-            "<span color='#90caf9'>󰚰 </span>", // 7. Azul Pálido (Monitoramento Leve)
-            "<span color='#64b5f6'>󰚰 </span>", // 8. Azul Claro (Monitoramento Ativo)
-            "<span color='#42a5f5'>󰚰 </span>", // 9. Azul (Alerta Baixo)
-            "<span color='#fff9c4'>󰚰 </span>", // 10. Amarelo Pálido (Aviso Preliminar)
-            "<span color='#fff59d'>󰚰 </span>", // 11. Amarelo Claro (Aviso)
-            "<span color='#fff176'>󰚰 </span>", // 12. Amarelo (Alerta Moderado)
-            "<span color='#ffee58'>󰚰 </span>", // 13. Amarelo Intenso (Alerta Elevado)
-            "<span color='#ffd54f'>󰚰 </span>", // 14. Dourado (Cuidado)
-            "<span color='#ffb74d'>󰚰 </span>", // 15. Laranja Claro (Perigo Iminente)
-            "<span color='#ff9800'>󰚰 </span>", // 16. Laranja (Perigo)
-            "<span color='#f4511e'>󰚰 </span>", // 17. Laranja Escuro (Perigo Alto)
-            "<span color='#e53935'>󰚰 </span>", // 18. Vermelho (Risco Alto)
-            "<span color='#c62828'>󰚰 </span>", // 19. Vermelho Escuro (Risco Crítico)
-            "<span color='#b71c1c'>󰚰 </span>"  // 20. Bordô (Situação Crítica)
-        ],
-        "interval": 3600,
-        "on-click": "kitty -e ~/.config/waybar/scripts/updatesystem.sh || ~/.config/hypr/scripts/refresh_waybar.sh"
-    },
+  "custom/updates" : {
+    "exec": "~/.config/waybar/scripts/checkupdates.sh -j",
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": [
+      "<span color='#ffffff'>󰚰 </span>", // 1. Branco (Normal)
+      "<span color='#e8f5e9'>󰚰 </span>", // 2. Verde Muito Claro (Situação Estável)
+      "<span color='#c8e6c9'>󰚰 </span>", // 3. Verde Pálido (Leve Alteração)
+      "<span color='#a5d6a7'>󰚰 </span>", // 4. Verde Suave (Primeiro Nível de Atenção)
+      "<span color='#81c784'>󰚰 </span>", // 5. Verde (Atenção)
+      "<span color='#bbdefb'>󰚰 </span>", // 6. Azul Muito Claro (Informativo)
+      "<span color='#90caf9'>󰚰 </span>", // 7. Azul Pálido (Monitoramento Leve)
+      "<span color='#64b5f6'>󰚰 </span>", // 8. Azul Claro (Monitoramento Ativo)
+      "<span color='#42a5f5'>󰚰 </span>", // 9. Azul (Alerta Baixo)
+      "<span color='#fff9c4'>󰚰 </span>", // 10. Amarelo Pálido (Aviso Preliminar)
+      "<span color='#fff59d'>󰚰 </span>", // 11. Amarelo Claro (Aviso)
+      "<span color='#fff176'>󰚰 </span>", // 12. Amarelo (Alerta Moderado)
+      "<span color='#ffee58'>󰚰 </span>", // 13. Amarelo Intenso (Alerta Elevado)
+      "<span color='#ffd54f'>󰚰 </span>", // 14. Dourado (Cuidado)
+      "<span color='#ffb74d'>󰚰 </span>", // 15. Laranja Claro (Perigo Iminente)
+      "<span color='#ff9800'>󰚰 </span>", // 16. Laranja (Perigo)
+      "<span color='#f4511e'>󰚰 </span>", // 17. Laranja Escuro (Perigo Alto)
+      "<span color='#e53935'>󰚰 </span>", // 18. Vermelho (Risco Alto)
+      "<span color='#c62828'>󰚰 </span>", // 19. Vermelho Escuro (Risco Crítico)
+      "<span color='#b71c1c'>󰚰 </span>"  // 20. Bordô (Situação Crítica)
+    ],
+    "interval": 3600,
+    "on-click": "kitty -e ~/.config/waybar/scripts/updatesystem.sh || ~/.config/hypr/scripts/refresh_waybar.sh"
+  },
 
-    "hyprland/window": {
-        "format": "{title}",
-        "tooltip-format": "{title}",
-        "icon": true,
-        "separate-outputs": true,
-        "icon-size": 20,
-        "max-length": 50,
-    },
-    
-    "hyprland/workspaces": {
-      "on-scroll-up": "hyprctl dispatch workspace +1",
-      "on-scroll-down": "hyprctl dispatch workspace -1",
-      "format": " {id} {windows}",
-      "format-window-separator": " ",
-      "window-rewrite-default": " ",
-      "window-rewrite": {
-        "discord": "  ",
-        "title<.*nvim.*>": " ",
-        "chrome": " ",
-        "title<.*github.*>": " ",
-        "kitty": " ",
-        "clion": " ",
-        "Microsoft Teams": "󰊻 ",
-        "Telegram": " ",
-        "Dolphin": " ",
-        "Chromium-browser": "󱖑 ",
-        "Spotify": " ",
-      },
-    },
+  "hyprland/window": {
+    "format": "{title}",
+    "tooltip-format": "{title}",
+    "icon": true,
+    "separate-outputs": true,
+    "icon-size": 20,
+    "max-length": 50,
+  },
 
-    "mpris": {
-        "format": " {player_icon}  {dynamic} ",
-        "format-paused": " {status_icon}  <i>{dynamic}</i> ",
-        "dynamic-separator": "  ",
-        "dynamic-order": [
-            "title", 
-            "album",
-            "artist", 
-        ],
-        "title-len": 30,
-        "player-icons": {
-            "default": "󰐎",
-            "mpv": "🎵",
-            "chromium": " ",
-            "spotify": "",
-        },
-        "status-icons": {
-            "paused": ""
-        },
+  "hyprland/workspaces": {
+    "on-scroll-up": "hyprctl dispatch workspace +1",
+    "on-scroll-down": "hyprctl dispatch workspace -1",
+    "format": " {id} {windows}",
+    "format-window-separator": " ",
+    "window-rewrite-default": " ",
+    "window-rewrite": {
+      "discord": "  ",
+      "title<.*nvim.*>": " ",
+      "chrome": " ",
+      "title<.*github.*>": " ",
+      "kitty": " ",
+      "clion": " ",
+      "Microsoft Teams": "󰊻 ",
+      "Telegram": " ",
+      "Dolphin": " ",
+      "Chromium-browser": "󱖑 ",
+      "Spotify": " ",
     },
+  },
 
-    "wireplumber": {
-        "format": "{icon}",
-        "format-icons": [
-            "",
-            "",
-            " ",
-        ],
-        "format-muted": "",
-        "tooltip-format": "{node_name}: {volume}%",
-        "on-click": "pavucontrol",
-        "max-volume": 100,
-        "scroll-step": 5
+  "mpris": {
+    "format": " {player_icon}  {dynamic} ",
+    "format-paused": " {status_icon}  <i>{dynamic}</i> ",
+    "dynamic-separator": "  ",
+    "dynamic-order": [
+      "title", 
+      "album",
+      "artist", 
+    ],
+    "title-len": 30,
+    "player-icons": {
+      "default": "󰐎",
+      "mpv": "🎵",
+      "chromium": " ",
+      "spotify": "",
     },
+    "status-icons": {
+      "paused": ""
+    },
+  },
 
-    "clock": {
-        "format": "{:%H:%M %d/%m} ",
-        "tooltip-format": "{:%A, %d %B}"
-    },
+  "wireplumber": {
+    "format": "{icon}",
+    "format-icons": [
+      "",
+      "",
+      " ",
+    ],
+    "format-muted": "",
+    "tooltip-format": "{node_name}: {volume}%",
+    "on-click": "pavucontrol",
+    "max-volume": 100,
+    "scroll-step": 5
+  },
 
-    "group/hardware": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 500,
-            "children-class": "not-power",
-            "transition-left-to-right": false,
-        },
-        "modules": [
-            "custom/htop",
-            "cpu",
-            "memory"
-        ]
-    },
+  "clock": {
+    "format": "{:%H:%M %d/%m} ",
+    "tooltip-format": "{:%A, %d %B}"
+  },
 
-    "custom/htop": {
-        "format": "󰇄 󰇅",
-        "tooltip": false,
-        "on-click": "kitty htop",
+  "group/hardware": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": false,
     },
+    "modules": [
+      "custom/htop",
+      "cpu",
+      "memory"
+    ]
+  },
 
-    "cpu": {
-        "interval": 5,
-        "format": "{icon}",
-        "format-icons": [
-            "<span color='#eeeeee'> </span>", // white
-            "<span color='#69ff94'> </span>", // green
-            "<span color='#2aa9ff'> </span>", // blue
-            "<span color='#ffffa5'> </span>", // yellow
-            "<span color='#ffffa5'> </span>", // yellow
-            "<span color='#ff9977'> </span>", // orange
-            "<span color='#dd532e'> </span>"  // red
-        ],
-    },
+  "custom/htop": {
+    "format": "󰇄 󰇅",
+    "tooltip": false,
+    "on-click": "kitty htop",
+  },
 
-    "memory": {
-      "interval": 10,
-      "format": " ",
-      "tooltip-format": "{used:0.1f}GiB/{total:0.1f}GiB ({percentage}%)"
-    },
+  "cpu": {
+    "interval": 5,
+    "format": "{icon}",
+    "format-icons": [
+      "<span color='#eeeeee'> </span>", // white
+      "<span color='#69ff94'> </span>", // green
+      "<span color='#2aa9ff'> </span>", // blue
+      "<span color='#ffffa5'> </span>", // yellow
+      "<span color='#ffffa5'> </span>", // yellow
+      "<span color='#ff9977'> </span>", // orange
+      "<span color='#dd532e'> </span>"  // red
+    ],
+  },
 
-    "group/connectivity": {
-        "orientation": "inherit",
-        "modules": [
-            "bluetooth",
-            "network",
-        ]
-    },
+  "memory": {
+    "interval": 10,
+    "format": " ",
+    "tooltip-format": "{used:0.1f}GiB/{total:0.1f}GiB ({percentage}%)"
+  },
 
-    "network": {
-        "interval": 5,
-        "format": "",
-        "on-click": "kitty nmtui",
-        "format-disconnected": "\udb83\udc9c ",
-        "format-ethernet": "\udb83\udc9d ",
-        "format-wifi": "{icon}",
-        "format-icons": ["\udb82\udd2f", "\udb82\udd1f", "\udb82\udd22", "\udb82\udd25", "\udb82\udd28"],
-        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
-        "tooltip-format-ethernet": "{ifname}: {bandwidthDownBytes}",
-        "tooltip-format-disconnected": "Disconnected",
-    },
+  "group/connectivity": {
+    "orientation": "inherit",
+    "modules": [
+      "bluetooth",
+      "network",
+    ]
+  },
 
-    "bluetooth": {
-        "on-click": "kitty bluetui",
-        "format": "󰂯 ",
-        "format-disabled": "󰂲 ",
-        "format-connected": "󰂰 ",
-        "tooltip-format": "{controller_alias}\t{controller_address}",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
-    },
+  "network": {
+    "interval": 5,
+    "format": "",
+    "on-click": "kitty nmtui",
+    "format-disconnected": "\udb83\udc9c ",
+    "format-ethernet": "\udb83\udc9d ",
+    "format-wifi": "{icon}",
+    "format-icons": ["\udb82\udd2f", "\udb82\udd1f", "\udb82\udd22", "\udb82\udd25", "\udb82\udd28"],
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname}: {bandwidthDownBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+  },
 
-    "tray": {
-        "show-passive-items": true,
-        "icon-size": 16,
-        "spacing": 16
-    },
+  "bluetooth": {
+    "on-click": "kitty bluetui",
+    "format": "󰂯 ",
+    "format-disabled": "󰂲 ",
+    "format-connected": "󰂰 ",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+  },
 
-    "group/group-power": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 500,
-            "children-class": "not-power",
-            "transition-left-to-right": false,
-        },
-        "modules": [
-            "custom/power", // First element is the "group leader" and won't ever be hidden
-            "custom/quit",
-            "custom/lock",
-            "custom/reboot",
-        ]
-    },
+  "tray": {
+    "show-passive-items": true,
+    "icon-size": 16,
+    "spacing": 16
+  },
 
-    "custom/quit": {
-        "format": "󰗼  ",
-        "tooltip": false,
-        "on-click": "hyprctl dispatch exit"
+  "group/group-power": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": false,
     },
+    "modules": [
+      "custom/power", // First element is the "group leader" and won't ever be hidden
+      "custom/lock",
+      "custom/reboot",
+      "custom/quit",
+    ]
+  },
 
-    "custom/lock": {
-        "format": "󰍁  ",
-        "tooltip": false,
-        "on-click": "hyprlock"
-    },
 
-    "custom/reboot": {
-        "format": "󰜉  ",
-        "tooltip": false,
-        "on-click": "reboot"
-    },
+  "custom/lock": {
+    "format": "󰍁  ",
+    "tooltip": false,
+    "on-click": "hyprlock"
+  },
 
-    "custom/power": {
-        "format": "  ",
-        "tooltip": false,
-        "on-click": "shutdown now"
-    },
+  "custom/reboot": {
+    "format": "󰜉  ",
+    "tooltip": false,
+    "on-click": "~/.config/waybar/scripts/confirmreboot.sh"
+  },
+
+  "custom/quit": {
+    "format": "󰗼  ",
+    "tooltip": false,
+    "on-click": "~/.config/waybar/scripts/confirmexit.sh"
+  },
+
+  "custom/power": {
+    "format": "  ",
+    "tooltip": false,
+    "on-click": "~/.config/waybar/scripts/confirmshutdown.sh"
+  },
 }
