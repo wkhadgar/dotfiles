@@ -58,11 +58,11 @@
     "window-rewrite-default": " ",
     "window-rewrite": {
       "discord": "  ",
-      "title<.*nvim.*>": " ",
+      "title<.*nvim.*>": " ",
       "chrome": " ",
       "title<.*github.*>": " ",
-      "kitty": " ",
-      "clion": " ",
+      "title<.*kitty.*>": " ",
+      "clion": "󰬊󰬓󰬐󰬖󰬕 ",
       "Microsoft Teams": "󰊻 ",
       "Telegram": " ",
       "Dolphin": " ",
@@ -128,7 +128,7 @@
   "custom/htop": {
     "format": "󰇄 󰇅",
     "tooltip": false,
-    "on-click": "kitty htop",
+    "on-click": "kitty btop",
   },
 
   "cpu": {

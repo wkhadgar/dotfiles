@@ -15,7 +15,7 @@ if [ "$do_update" -gt 0 ]; then
     notif_txt="Atualização cancelada..."
     ;;
   [yY]* | "")
-    sudo pacman -Syu
+    paru -Syu
     up_to_date=$?
     echo ""
     if [ "$up_to_date" -gt 0 ]; then
