@@ -9,6 +9,7 @@ max=$CRITICAL_UPDATE_AMOUNT
 percentage=$((100 * pending / max))
 percentage=$((percentage > 100 ? 100 : percentage))
 class="class"
+alt=0
 
 if [ "$pending" -gt 0 ]; then
   tooltip="Há $pending atualizações disponíveis."
@@ -28,7 +29,12 @@ while getopts "bj" opt; do
     fi
     ;;
   j)
-    echo "{\"text\": \"$pending\", \"alt\": \"$pending\", \"tooltip\": \"$tooltip\", \"class\": \"$class\", \"percentage\": $percentage }"
+    if [ "$pending" -gt 0 ]; then
+      alt="$pending"
+    else
+      alt=""
+    fi
+    echo "{\"text\": \"$pending\", \"alt\": \"$alt\", \"tooltip\": \"$tooltip\", \"class\": \"$class\", \"percentage\": $percentage }"
     exit 0
     ;;
   *)
