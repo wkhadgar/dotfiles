@@ -170,7 +170,7 @@
 
   "network": {
     "interval": 5,
-    "format": "",
+    "format": "{icon}",
     "on-click": "kitty nmtui",
     "format-disconnected": "\udb83\udc9c ",
     "format-ethernet": "\udb83\udc9d ",
