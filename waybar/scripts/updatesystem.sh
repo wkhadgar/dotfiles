@@ -13,9 +13,11 @@ if [ "$do_update" -gt 0 ]; then
   case "$update_answer" in
   [nN]*)
     notif_txt="Atualização cancelada..."
+    sleep 1
     ;;
   [yY]* | "")
-    paru -Syu
+    yes | paru -Syu
+    sleep 5
     up_to_date=$?
     echo ""
     if [ "$up_to_date" -gt 0 ]; then
