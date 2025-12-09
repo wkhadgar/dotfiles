@@ -7,3 +7,4 @@ cp -r ~/.config/waybar/* ./waybar/
 cp -r ~/.config/rofi/* ./rofi/
 cp -r ~/.config/nvim/* ./nvim/
 cp -r ~/.config/kitty/* ./kitty/
+cp -r ~/.config/neofetch/* ./neofetch/
