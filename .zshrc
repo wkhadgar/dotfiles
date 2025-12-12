@@ -26,7 +26,6 @@ HISTFILE=~/.histfile
 HISTSIZE=100
 SAVEHIST=1000
 setopt autocd beep nomatch
-bindkey -v
 # End of lines configured by zsh-newuser-install
 
 autoload -Uz vcs_info
@@ -56,12 +55,11 @@ alias cls=clear
 alias ls='ls --color=auto'
 alias sa='source ~/.zshrc; echo "ZSH aliases sourced."'
 alias mconf='west build -t menuconfig'
-#alias killall='killall -s 9'
+# alias killall='killall -s 9'
+
+eval "$(atuin init zsh)"
 
 # Bind Home, End, and Delete using terminfo values
-bindkey -e
 bindkey "^[[H"  beginning-of-line
 bindkey "^[[F"  end-of-line
 bindkey "^[[3~" delete-char
-bindkey "^[[6~" end-of-buffer-or-history
-bindkey "^[[5~" beginning-of-buffer-or-history
