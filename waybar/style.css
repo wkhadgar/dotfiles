@@ -6,8 +6,6 @@
 * {
     font-family: JetBrainsMono Nerd Font;
     font-size: 15px;
-    padding: 0;
-    margin: 0;
 }
 
 #waybar {
@@ -34,8 +32,10 @@
 #battery,
 #backlight,
 #language,
-#network,
 #bluetooth,
+#network,
+#custom,
 #tray {
-    padding-right: 0.5em 
+    padding-right: 0.2em;
+    padding-left: 0.2em;
 }
