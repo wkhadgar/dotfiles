@@ -59,7 +59,7 @@
     "format-window-separator": " ",
     "window-rewrite-default": "",
     "window-rewrite": {
-      "discord": "",
+      "discord": " ",
       "title<.*nvim.*>": "",
       "chrome": "",
       "firefox":"󰈹",

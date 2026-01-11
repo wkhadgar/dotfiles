@@ -7,7 +7,7 @@ notif_txt="\nNão há atualizações pendentes..."
 if [ "$do_update" -gt 0 ]; then
   echo "Atualizações encontradas para:"
   echo ""
-  checkupdates
+  paru -Qu
   echo ""
   read -r -p "Deseja prosseguir com as atualizações? [Y/n]" update_answer
   case "$update_answer" in

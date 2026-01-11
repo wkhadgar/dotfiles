@@ -2,7 +2,7 @@
 
 CRITICAL_UPDATE_AMOUNT=25
 
-pending=$(checkupdates | wc -l)
+pending=$(paru -Qu | wc -l)
 #max=$(pacman -Q | wc -l)
 max=$CRITICAL_UPDATE_AMOUNT
 
