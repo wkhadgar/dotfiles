@@ -25,5 +25,17 @@
     "poweradapter",
     "break",
     "colors"
-  ]
+  ],
+  "logo": {
+  "source": "~/.config/fastfetch/logo.txt",
+  "color": { "1": "red" }
+  },
+  "display": {
+    "color": {
+      "keys": "red",
+      "title": "red",
+      "output": "white"
+    }
+  },
 }
+

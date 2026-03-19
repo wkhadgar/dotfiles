@@ -1,0 +1,6 @@
+[terminal]
+vt = current
+
+[default_session]
+command = "/usr/local/bin/start-greeter.sh"
+user = "greeter"

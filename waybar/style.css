@@ -1,29 +1,109 @@
 @define-color bar_foreground #eeeeee;
 @define-color bar_foreground_active #ffbf00;
-@define-color bar_foreground_inactive #9a9a9a;
-@define-color bar_background rgba(0x25,0x25,0x25,0.8);
+@define-color bar_foreground_inactive #555555;
+@define-color bar_background rgba(0x14,0x14,0x14,0.9);
+@define-color bar_border #2a2a2a;
+@define-color nerv_red #cc0000;
 
 * {
     font-family: JetBrainsMono Nerd Font;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 #waybar {
     color: @bar_foreground;
     background: @bar_background;
+    border-bottom: none;
+}
+
+/* shared segment style */
+#custom-nerv,
+#mpris,
+#workspaces,
+#tray,
+#custom-updates,
+#wireplumber,
+#bluetooth,
+#network,
+#custom-htop,
+#cpu,
+#memory,
+#clock,
+#custom-power,
+#custom-lock,
+#custom-reboot,
+#custom-quit {
+    background: #1a1a1a;
+    border: 1px solid @bar_border;
+    margin: 4px 2px;
+    padding: 0 10px;
+}
+
+/* active/highlighted segments */
+#clock,
+#workspaces button.active,
+#custom-nerv {
+    border-color: @bar_foreground_active;
+}
+
+#custom-nerv {
+    border-color: @nerv_red;
+    color: @nerv_red;
+    letter-spacing: 0.15em;
+    font-size: 11px;
+}
+
+#workspaces {
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
 #workspaces button {
-    color: @bar_foreground;
-    padding-left: 0.5em;
-}
-
-#workspaces button.empty {
+    background: #1a1a1a;
+    border: 1px solid @bar_border;
     color: @bar_foreground_inactive;
+    margin: 4px 2px;
+    padding: 0 10px;
+    min-width: 0;
 }
 
 #workspaces button.active {
     color: @bar_foreground_active;
+    border-color: @bar_foreground_active;
+}
+
+#workspaces button.empty {
+    color: @bar_foreground_inactive;
+    border-color: @bar_border;
+}
+
+#wireplumber {
+    border-color: @bar_foreground_active;
+}
+
+#clock {
+    color: @bar_foreground_active;
+}
+
+#network,
+#bluetooth {
+    color: @bar_foreground;
+}
+
+#cpu,
+#memory {
+    color: @bar_foreground;
+}
+
+#tray {
+    color: @bar_foreground;
+}
+
+#mpris {
+    color: @bar_foreground_inactive;
+    font-size: 11px;
 }
 
 #memory,
@@ -34,8 +114,11 @@
 #language,
 #bluetooth,
 #network,
-#custom,
+#custom-power,
+#custom-lock,
+#custom-reboot,
+#custom-quit,
 #tray {
-    padding-right: 0.2em;
-    padding-left: 0.2em;
+    padding-right: 0.4em;
+    padding-left: 0.4em;
 }

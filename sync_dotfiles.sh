@@ -1,5 +1,9 @@
 #!/usr/bin/bash
 
+cp /etc/greetd/config.toml ./greetd/
+cp /etc/issue ./issue
+cp /usr/local/bin/start-greeter.sh ./start-greeter.sh
+
 cp ~/.zshrc ./.zshrc
 
 cp -r ~/.config/hypr/* ./hypr/
