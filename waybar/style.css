@@ -32,7 +32,7 @@
 #custom-power,
 #custom-lock,
 #custom-reboot,
-#custom-quit {
+#custom-exit {
     background: #1a1a1a;
     border: 1px solid @bar_border;
     margin: 4px 2px;
@@ -117,8 +117,32 @@
 #custom-power,
 #custom-lock,
 #custom-reboot,
-#custom-quit,
+#custom-exit,
 #tray {
     padding-right: 0.4em;
     padding-left: 0.4em;
+}
+
+#clock {
+    border-color: #ffbf00;
+}
+
+#wireplumber {
+    border-color: #ffbf00;
+}
+
+#wireplumber.muted {
+    border-color: #cc0000;
+}
+
+#network {
+    border-color: #ffbf00;
+}
+
+#bluetooth {
+    border-color: #2a2a2a;
+}
+
+#bluetooth.connected {
+    border-color: #ffbf00;
 }

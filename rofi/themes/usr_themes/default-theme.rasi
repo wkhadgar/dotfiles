@@ -1,12 +1,13 @@
 * {
-    bg0:    #212121F2;
-    bg1:    #2A2A2A;
-    bg2:    #3D3D3D80;
-    bg3:    #FBC02DF2;
-    fg0:    #E6E6E6;
-    fg1:    #FFFFFF;
-    fg2:    #969696;
-    fg3:    #3D3D3D;
+    bg0:    #0d0d0dF2;
+    bg1:    #1a1a1a;
+    bg2:    #1f1f1f;
+    bg3:    #ffbf00;
+    bg4:    #cc0000;
+    fg0:    #eeeeee;
+    fg1:    #ffbf00;
+    fg2:    #666666;
+    fg3:    #444444;
 }
 
-@import "~/.config/rofi/themes/template/rounded-template.rasi"
+@import "~/.config/rofi/themes/template/magi-template.rasi"
