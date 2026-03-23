@@ -34,48 +34,27 @@ sudo pacman -S neovim
 
 ---
 
-## Setup
+## Install
 
-### greetd
 ```bash
-sudo systemctl enable greetd
-sudo cp start-greeter.sh /usr/local/bin/start-greeter.sh
-sudo chmod +x /usr/local/bin/start-greeter.sh
-sudo cp greetd/config.toml /etc/greetd/config.toml
-sudo cp issue /etc/issue
-```
-
-### dotfiles
-```bash
-cp -r hypr/* ~/.config/hypr/
-cp -r waybar/* ~/.config/waybar/
-cp -r rofi/* ~/.config/rofi/
-cp -r kitty/* ~/.config/kitty/
-cp -r fastfetch/* ~/.config/fastfetch/
-cp -r nvim/* ~/.config/nvim/
-cp -r btop/* ~/.config/btop/
-cp -r swaync/* ~/.config/swaync/
-cp .zshrc ~/.zshrc
-```
-
-### wallpaper
-```bash
-mkdir -p ~/wallpapers
-cp nerv-wallpaper.png ~/wallpapers/
-```
-
-### hyprpaper
-Check monitor names and update `hypr/hyprpaper.conf` accordingly:
-```bash
-hyprctl monitors | grep Monitor
+git clone https://github.com/wkhadgar/dotfiles
+cd dotfiles
+bash import_dotfiles.sh
 ```
 
 ---
 
-## Notes
+## Sync back
 
-- `atuin` must be the last line of `.zshrc`
-- `/etc/issue` uses plain ASCII only — no Unicode symbols
-- Rofi confirm scripts require `-lines 2` in the call
-- btop: set `color_theme = "magi"` and `theme_background = false` in `btop.conf`
-- swaync blur: enabled for notification popups, disabled for control center
+```bash
+bash sync_dotfiles.sh
+```
+
+---
+
+## Post-install
+
+- Enable greetd: `sudo systemctl enable greetd`
+- Check monitor names and update `hypr/hyprpaper.conf`: `hyprctl monitors | grep Monitor`
+- Set btop theme: open btop, press `t` and select `magi`
+- `atuin` must remain the last line of `.zshrc`
