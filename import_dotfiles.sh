@@ -1,14 +1,18 @@
 #!/usr/bin/bash
 
-cp -r ./greetd/* /etc/greetd/
-cp ./issue /etc/issue
-cp ./start-greeter.sh /usr/local/bin/start-greeter.sh
+sudo cp -r ./greetd/* /etc/greetd/
+sudo cp ./issue /etc/issue
+sudo cp ./start-greeter.sh /usr/local/bin/start-greeter.sh
+sudo chmod +x /usr/local/bin/start-greeter.sh
 
 cp ./.zshrc ~/.zshrc
-
 cp -r ./hypr/* ~/.config/hypr/
 cp -r ./waybar/* ~/.config/waybar/
 cp -r ./rofi/* ~/.config/rofi/
 cp -r ./nvim/* ~/.config/nvim/
 cp -r ./kitty/* ~/.config/kitty/
 cp -r ./fastfetch/* ~/.config/fastfetch/
+cp -r ./btop/* ~/.config/btop/
+cp -r ./swaync/* ~/.config/swaync/
+
+mkdir -p ~/wallpapers && cp ./wallpapers/nerv-wallpaper.png ~/wallpapers/

@@ -1,0 +1,262 @@
+:root {
+  --cc-bg: rgba(10, 10, 10, 0.95);
+  --noti-border-color: rgba(204, 0, 0, 0.4);
+  --noti-bg: 10, 10, 10;
+  --noti-bg-alpha: 0.95;
+  --noti-bg-darker: rgb(10, 10, 10);
+  --noti-bg-hover: rgb(30, 30, 30);
+  --noti-bg-focus: rgba(204, 0, 0, 0.08);
+  --noti-close-bg: rgba(204, 0, 0, 0.2);
+  --noti-close-bg-hover: rgba(204, 0, 0, 0.4);
+  --text-color: rgb(238, 238, 238);
+  --text-color-disabled: rgb(80, 80, 80);
+  --bg-selected: rgb(204, 0, 0);
+  --notification-icon-size: 48px;
+  --notification-app-icon-size: calc(var(--notification-icon-size) / 3);
+  --notification-group-icon-size: 24px;
+  --border: 1px solid var(--noti-border-color);
+  --border-radius: 0px;
+  --notification-shadow: none;
+  --font-size-body: 13px;
+  --font-size-summary: 13px;
+  --hover-transition: background 0.15s ease-in-out;
+  --hover-tranistion: background 0.15s ease-in-out;
+  --group-collapse-transition: opacity 400ms ease-in-out;
+  --group-collapse-tranistion: opacity 400ms ease-in-out;
+}
+
+@define-color cc-bg rgba(10, 10, 10, 0.97);
+@define-color noti-border-color rgba(204, 0, 0, 0.4);
+@define-color noti-bg rgba(20, 20, 20, 0.97);
+@define-color noti-bg-opaque rgb(20, 20, 20);
+@define-color noti-bg-darker rgb(10, 10, 10);
+@define-color noti-bg-hover rgb(30, 30, 30);
+@define-color noti-bg-hover-opaque rgb(30, 30, 30);
+@define-color noti-bg-focus rgba(204, 0, 0, 0.08);
+@define-color noti-close-bg rgba(204, 0, 0, 0.2);
+@define-color noti-close-bg-hover rgba(204, 0, 0, 0.4);
+@define-color text-color rgb(238, 238, 238);
+@define-color text-color-disabled rgb(80, 80, 80);
+@define-color bg-selected rgb(204, 0, 0);
+
+* {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+}
+
+notificationwindow, blankwindow {
+  background: transparent;
+}
+
+.close-button {
+  background: var(--noti-close-bg);
+  color: #cc0000;
+  text-shadow: none;
+  padding: 0;
+  border-radius: 0;
+  margin-top: 8px;
+  margin-right: 8px;
+  box-shadow: none;
+  border: 1px solid rgba(204, 0, 0, 0.3);
+  min-width: 20px;
+  min-height: 20px;
+}
+
+.close-button:hover {
+  box-shadow: none;
+  background: var(--noti-close-bg-hover);
+  transition: var(--hover-transition);
+  border: 1px solid rgba(204, 0, 0, 0.6);
+}
+
+.notification-row {
+  background: none;
+  outline: none;
+}
+
+.notification-row:focus {
+  background: var(--noti-bg-focus);
+}
+
+.notification-row .notification-background {
+  padding: 4px 8px;
+}
+
+.notification-row .notification-background .notification {
+  border-radius: 0;
+  border: var(--border);
+  border-left: 2px solid #cc0000;
+  padding: 0;
+  transition: var(--hover-transition);
+  background: rgba(var(--noti-bg), var(--noti-bg-alpha));
+}
+
+.notification-row .notification-background .notification.low {
+  border-left: 2px solid #555555;
+}
+
+.notification-row .notification-background .notification.normal {
+  border-left: 2px solid #cc0000;
+}
+
+.notification-row .notification-background .notification.critical {
+  border-left: 2px solid #ff4444;
+  background: rgba(40, 10, 10, 0.97);
+}
+
+.notification-row .notification-background .notification .notification-default-action {
+  padding: 8px;
+  margin: 0;
+  box-shadow: none;
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  transition: var(--hover-transition);
+  border-radius: 0;
+}
+
+.notification-row .notification-background .notification .notification-default-action:hover {
+  background: var(--noti-bg-hover);
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary {
+  font-size: 13px;
+  font-weight: bold;
+  color: #ffbf00;
+  text-shadow: none;
+  letter-spacing: 0.05em;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .time {
+  font-size: 11px;
+  font-weight: normal;
+  color: #444444;
+  text-shadow: none;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body {
+  font-size: 13px;
+  font-weight: normal;
+  color: #eeeeee;
+  text-shadow: none;
+}
+
+.notification-group .notification-group-headers .notification-group-header {
+  color: #ffbf00;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+.notification-group .notification-group-headers .notification-group-icon {
+  color: #cc0000;
+}
+
+.notification-group.collapsed.not-expanded {
+  opacity: 0.3;
+}
+
+.control-center {
+  background: var(--cc-bg);
+  color: var(--text-color);
+  border-radius: 0;
+  border-left: 1px solid rgba(204, 0, 0, 0.4);
+}
+
+.control-center .control-center-list-placeholder {
+  opacity: 0.3;
+  color: #cc0000;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+}
+
+.control-center .control-center-list {
+  background: transparent;
+}
+
+.blank-window {
+  background: transparent;
+}
+
+.floating-notifications {
+  background: transparent;
+}
+
+.floating-notifications .notification {
+  box-shadow: none;
+}
+
+/*** Widgets ***/
+.widget {
+  margin: 4px 8px;
+  padding: 8px;
+  border-radius: 0;
+}
+
+.widget-title {
+  border-bottom: 1px solid rgba(204, 0, 0, 0.3);
+  padding-bottom: 8px;
+}
+
+.widget-title > label {
+  margin-right: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #cc0000;
+  letter-spacing: 0.2em;
+}
+
+.widget-title > button {
+  margin-left: 8px;
+  border-radius: 0;
+  border: 1px solid rgba(204, 0, 0, 0.4);
+  color: #cc0000;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  background: transparent;
+}
+
+.widget-title > button:hover {
+  background: rgba(204, 0, 0, 0.1);
+}
+
+.widget-dnd label {
+  color: #ffbf00;
+  margin-right: 8px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+.widget-dnd switch {
+  border-radius: 0;
+  border: 1px solid rgba(204, 0, 0, 0.4);
+  background: transparent;
+}
+
+.widget-dnd switch:checked {
+  background: rgba(204, 0, 0, 0.3);
+}
+
+.widget-dnd switch slider {
+  border-radius: 0;
+  background: #cc0000;
+}
+
+.widget-inhibitors > label {
+  margin-right: 8px;
+  font-size: 12px;
+  color: #ffbf00;
+  letter-spacing: 0.15em;
+}
+
+.widget-inhibitors > button {
+  margin-left: 8px;
+  border-radius: 0;
+  border: 1px solid rgba(204, 0, 0, 0.4);
+  color: #cc0000;
+  background: transparent;
+  font-size: 11px;
+}
+
+.widget-inhibitors > button:hover {
+  background: rgba(204, 0, 0, 0.1);
+}
