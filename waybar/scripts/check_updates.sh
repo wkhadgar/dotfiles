@@ -1,47 +1,45 @@
 #!/usr/bin/bash
 
-CRITICAL_UPDATE_AMOUNT=25
+CRITICAL_UPDATE_AMOUNT=45
+pending=$(checkupdates 2>/dev/null | wc -l)
+aur=$(paru -Qua 2>/dev/null | wc -l)
 
-pending=$(checkupdates | wc -l)
-#max=$(pacman -Q | wc -l)
-max=$CRITICAL_UPDATE_AMOUNT
+total=$((pending + aur))
 
-percentage=$((100 * pending / max))
-percentage=$((percentage > 100 ? 100 : percentage))
-class="class"
-alt=0
+percentage=$((100 * total / CRITICAL_UPDATE_AMOUNT))
+((percentage > 100)) && percentage=100
 
-if [ "$pending" -gt 0 ]; then
-  tooltip="Há $pending atualizações disponíveis."
+if ((total > 0)); then
+  tooltip="$pending + $aur AUR"
+  class="updates"
+  alt="$total"
 else
-  tooltip="Não há atualizações pendentes!"
+  class="no-updates"
+  alt=""
+  total=""
 fi
 
 while getopts "bj" opt; do
   case $opt in
   b)
-    if [ "$pending" -gt 0 ]; then
+    ((total > 0)) && {
       echo "true"
       exit 0
-    else
-      echo "false"
-      exit 1
-    fi
+    }
+    echo "false"
+    exit 1
     ;;
   j)
-    if [ "$pending" -gt 0 ]; then
-      alt="$pending"
-    else
-      alt=""
-    fi
-    echo "{\"text\": \"$pending\", \"alt\": \"$alt\", \"tooltip\": \"$tooltip\", \"class\": \"$class\", \"percentage\": $percentage }"
+    # Output raw JSON
+    printf '{"text": "%s", "alt": "%s", "tooltip": "%s", "class": "%s", "percentage": %s}\n' \
+      "$total" "$alt" "$tooltip" "$class" "$percentage"
     exit 0
     ;;
   *)
-    echo "Invalid arguments given"
+    echo "Invalid arguments given" >&2
     exit 1
     ;;
   esac
 done
 
-echo "$pending"
+echo "$total"

@@ -43,7 +43,8 @@
       "<span color='#b71c1c'>󰚰</span>"  // 20. Bordô (Situação Crítica)
     ],
     "interval": 3600,
-    "on-click": "kitty -e ~/.config/waybar/scripts/updatesystem.sh || ~/.config/hypr/scripts/refresh_waybar.sh"
+    "on-click": "kitty -e ~/.config/waybar/scripts/update_system.sh; ~/.config/hypr/scripts/refresh_waybar.sh",
+    "hide-empty-text": true,
   },
 
   "hyprland/window": {

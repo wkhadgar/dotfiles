@@ -1,18 +1,18 @@
 #!/usr/bin/bash
 
-do_update=$(~/.config/waybar/scripts/checkupdates.sh)
+do_update=$(~/.config/waybar/scripts/check_updates.sh)
 
-notif_txt="\nNão há atualizações pendentes..."
+notif_txt="\n--- MAGI NETWORK IS UP TO DATE ---"
 
 if [ "$do_update" -gt 0 ]; then
-  echo "Atualizações encontradas para:"
+  echo "FOUND NEW MAGI PROTOCOLS FOR:"
   echo ""
-  paru -Qu
+  paru -Qua
   echo ""
-  read -r -p "Deseja prosseguir com as atualizações? [Y/n]" update_answer
+  read -r -p "ACCEPT MAGI UPDATES? [Y/n]" update_answer
   case "$update_answer" in
   [nN]*)
-    notif_txt="Atualização cancelada..."
+    notif_txt="--- ABORTED UPDATES ---"
     sleep 1
     ;;
   [yY]* | "")
@@ -21,9 +21,9 @@ if [ "$do_update" -gt 0 ]; then
     up_to_date=$?
     echo ""
     if [ "$up_to_date" -gt 0 ]; then
-      notif_txt="Não foi possível atualizar com sucesso..."
+      notif_txt="--- MAGI LINK ERROR ---"
     else
-      notif_txt="Sistema atualizado com sucesso!"
+      notif_txt="--- MAGI PROTOCOLS UPDATED ---"
     fi
     ;;
   *)
