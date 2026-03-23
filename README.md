@@ -13,7 +13,7 @@ sudo pacman -S hyprland hyprlock hyprpaper greetd
 paru -S tuigreet
 
 # Terminal & shell
-sudo pacman -S kitty zsh fastfetch btop
+sudo pacman -S kitty zsh fastfetch btop zsh-syntax-highlighting zsh-autosuggestions
 paru -S atuin ascii-image-converter
 
 # Bar & launcher
