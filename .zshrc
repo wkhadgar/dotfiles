@@ -1,65 +1,60 @@
-
-# The following lines were added by compinstall
-
-zstyle ':completion:*' completer _expand _complete _ignored
-zstyle ':completion:*' completions 1
-zstyle ':completion:*' format 'Completing %d'
-zstyle ':completion:*' glob 1
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' insert-unambiguous true
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}'
-zstyle ':completion:*' max-errors 15
-zstyle ':completion:*' menu select=long
-zstyle ':completion:*' original true
-zstyle ':completion:*' prompt 'Off by %e typos:'
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' substitute 1
-zstyle :compinstall filename '/home/wkhadgar/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=100
-SAVEHIST=1000
-setopt autocd beep nomatch
-# End of lines configured by zsh-newuser-install
-
+# vcs
 autoload -Uz vcs_info
-precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats ' %b '
-
-function venv_info {
-  [ $VIRTUAL_ENV ] && echo ' '`basename $VIRTUAL_ENV`' '
-}
-
-function cmd_color {
-  if [ $VIRTUAL_ENV ]; then 
-    echo 'green'
-  else
-    echo 'blue'
-  fi
-}
+zstyle ':vcs_info:git:*' enable git
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' formats ' %b'
+zstyle ':vcs_info:git:*' unstagedstr ' ⚠'
+zstyle ':vcs_info:git:*' stagedstr ' ⚠'
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 setopt PROMPT_SUBST
-NEWLINE=$'\n'
-PROMPT='%F{$(cmd_color)}╭%f %F{green}$(venv_info)%f%F{blue}  %~%f %F{yellow}${vcs_info_msg_0_}%f${NEWLINE}%F{$(cmd_color)}╰ $%f '
-alias grep='grep --color=auto'
 
-# Shortcuts
+function _nerv_precmd {
+  vcs_info
+
+  # venv
+  local venv_seg=""
+  [[ $VIRTUAL_ENV ]] && venv_seg="%F{#ffbf00} $(basename $VIRTUAL_ENV)  %f"
+
+  # ssh
+  local ssh_seg=""
+  [[ -n $SSH_CONNECTION ]] && ssh_seg="%F{#ff4444}󰌿 %M  %f"
+
+  # git
+  local git_seg=""
+  [[ -n $vcs_info_msg_0_ ]] && git_seg="  %F{#cc0000}${vcs_info_msg_0_}%f"
+
+  # box color priority: root > ssh > dirty git > failed exit > venv > default
+  local bc="%F{#cc0000}"
+  [[ $VIRTUAL_ENV ]]        && bc="%F{#ffbf00}"
+  [[ -n $vcs_info_msg_0_ && $(git status --short 2>/dev/null) ]] && bc="%F{#ff4444}"
+  [[ -n $SSH_CONNECTION ]]  && bc="%F{#ff4444}"
+  [[ $UID -eq 0 ]]          && bc="%F{#ff4444}"
+
+  # user
+  local user_seg="%F{#cc0000}%n%f"
+  [[ $UID -eq 0 ]] && user_seg="%F{#ff4444}MAGI-ROOT%f"
+
+  # print top line
+  print -P "${bc}╭%f ${user_seg}%F{#444444}@%f%F{#cc0000}%m%f  ${venv_seg}${ssh_seg}%F{#ffbf00}%~%f${git_seg}"
+
+  # set bottom line color — %(?..) checks last exit code
+  PROMPT="${bc}╰>>%f %(?.. %F{#ff4444}[%?]%f )"
+}
+
+precmd_functions+=(_nerv_precmd)
+
+# aliases
+alias grep='grep --color=auto'
 alias cls=clear
 alias ls='ls --color=auto'
 alias sa='source ~/.zshrc; echo "ZSH aliases sourced."'
 alias mconf='west build -t menuconfig'
-# alias killall='killall -s 9'
 
-eval "$(atuin init zsh)"
-
-# Bind Home, End, and Delete using terminfo values
+# keybinds
 bindkey "^[[H"  beginning-of-line
 bindkey "^[[F"  end-of-line
 bindkey "^[[3~" delete-char
+
+# atuin — MUST BE LAST
+eval "$(atuin init zsh)"
