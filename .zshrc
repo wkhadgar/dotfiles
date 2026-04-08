@@ -2,7 +2,7 @@
 autoload -Uz vcs_info
 zstyle ':vcs_info:git:*' enable git
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats ' %b'
+zstyle ':vcs_info:git:*' formats ' %b'
 zstyle ':vcs_info:git:*' unstagedstr ' ⚠'
 zstyle ':vcs_info:git:*' stagedstr ' ⚠'
 
@@ -14,15 +14,15 @@ function _nerv_precmd {
 
   # venv
   local venv_seg=""
-  [[ $VIRTUAL_ENV ]] && venv_seg="%F{#ffbf00} $(basename $VIRTUAL_ENV)  %f"
+  [[ $VIRTUAL_ENV ]] && venv_seg="%F{#ffbf00}($(basename $VIRTUAL_ENV))%f "
 
   # ssh
   local ssh_seg=""
-  [[ -n $SSH_CONNECTION ]] && ssh_seg="%F{#ff4444}󰌿 %M  %f"
+  [[ -n $SSH_CONNECTION ]] && ssh_seg="%F{#ff4444}󰌿 %M%f "
 
   # git
   local git_seg=""
-  [[ -n $vcs_info_msg_0_ ]] && git_seg="  %F{#cc0000}${vcs_info_msg_0_}%f"
+  [[ -n $vcs_info_msg_0_ ]] && git_seg="%F{#cc0000}${vcs_info_msg_0_}%f "
 
   # box color priority: root > ssh > dirty git > failed exit > venv > default
   local bc="%F{#cc0000}"
@@ -36,7 +36,7 @@ function _nerv_precmd {
   [[ $UID -eq 0 ]] && user_seg="%F{#ff4444}MAGI-ROOT%f"
 
   # print top line
-  print -P "${bc}╭%f ${user_seg}%F{#444444}@%f%F{#cc0000}%m%f  ${venv_seg}${ssh_seg}%F{#ffbf00}%~%f${git_seg}"
+  print -P "${bc}╭%f${venv_seg}${user_seg}%F{#444444}@%f%F{#cc0000}%m%f ${ssh_seg}%F{#ffbf00}%~%f ${git_seg}"
 
   # set bottom line color — %(?..) checks last exit code
   PROMPT="${bc}╰>>%f %(?.. %F{#ff4444}[%?]%f )"

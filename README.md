@@ -5,31 +5,17 @@
 
 ## Requirements
 
+Get the AUR manager (here, paru for compatibility):
 ```bash
-# Core
-sudo pacman -S hyprland hyprlock hyprpaper greetd
+sudo pacman -S --needed base-devel git
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+```
 
-# Greeter
-paru -S tuigreet
-
-# Terminal & shell
-sudo pacman -S kitty zsh fastfetch btop zsh-syntax-highlighting zsh-autosuggestions
-paru -S atuin ascii-image-converter
-
-# Bar & launcher
-sudo pacman -S waybar rofi-wayland ttf-jetbrains-mono-nerd
-
-# Notifications
-sudo pacman -S swaync
-
-# Audio & network
-sudo pacman -S pipewire pipewire-pulse wireplumber pulsemixer networkmanager bluez
-paru -S bluetui
-
-# Neovim
-sudo pacman -S neovim
-# LazyVim: https://lazyvim.org
-# Colorscheme: https://github.com/wkhadgar/catppuccin-nvim
+Then, get the packages:
+```bash
+sudo pacman -S --needed - < requirements.pacman
 ```
 
 ---
@@ -39,15 +25,20 @@ sudo pacman -S neovim
 ```bash
 git clone https://github.com/wkhadgar/dotfiles
 cd dotfiles
-bash import_dotfiles.sh
+source ./import_dotfiles.sh
 ```
 
 ---
 
-## Sync back
+## Sync back (if anything changed)
 
 ```bash
-bash sync_dotfiles.sh
+cd dotfiles
+source ./sync_dotfiles.sh
+
+git add.
+git commit -m "Your changes message"
+git push
 ```
 
 ---
@@ -56,5 +47,4 @@ bash sync_dotfiles.sh
 
 - Enable greetd: `sudo systemctl enable greetd`
 - Check monitor names and update `hypr/hyprpaper.conf`: `hyprctl monitors | grep Monitor`
-- Set btop theme: open btop, press `t` and select `magi`
 - `atuin` must remain the last line of `.zshrc`
