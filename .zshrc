@@ -40,9 +40,10 @@ function _nerv_precmd {
 
   # set bottom line color — %(?..) checks last exit code
   PROMPT="${bc}╰>>%f %(?.. %F{#ff4444}[%?]%f )"
+  PROMPT_IS_READY=1
 }
 
-precmd_functions+=(_nerv_precmd)
+[[ ! -v PROMPT_IS_READY ]] && precmd_functions+=(_nerv_precmd)
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
