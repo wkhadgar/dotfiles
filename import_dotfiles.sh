@@ -1,8 +1,7 @@
 #!/usr/bin/bash
 
-sudo cp -r ./greetd/* /etc/greetd/
-sudo cp ./issue /etc/issue
-sudo cp ./start-greeter.sh /usr/local/bin/start-greeter.sh
+sudo cp -r ./etc/* /etc/
+sudo cp -r ./usr/* /usr/
 sudo chmod +x /usr/local/bin/start-greeter.sh
 
 cp ./.zshrc ~/.zshrc
