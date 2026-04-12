@@ -26,6 +26,7 @@ sudo pacman -S --needed - < requirements.pacman
 git clone https://github.com/wkhadgar/dotfiles
 cd dotfiles
 source ./import_dotfiles.sh
+chsh -s $(which zsh)
 ```
 
 ---

@@ -18,7 +18,7 @@ function _nerv_precmd {
 
   # ssh
   local ssh_seg=""
-  [[ -n $SSH_CONNECTION ]] && ssh_seg="%F{#ff4444}󰌿 %M%f "
+  [[ -n $SSH_CONNECTION ]] && ssh_seg="%F{#ff4444}󱎤󱎤󰫵%f "
 
   # git
   local git_seg=""
@@ -36,7 +36,7 @@ function _nerv_precmd {
   [[ $UID -eq 0 ]] && user_seg="%F{#ff4444}MAGI-ROOT%f"
 
   # print top line
-  print -P "${bc}╭%f${venv_seg}${user_seg}%F{#444444}@%f%F{#cc0000}%m%f ${ssh_seg}%F{#ffbf00}%~%f ${git_seg}"
+  print -P "${bc}╭%f${venv_seg}${ssh_seg}${user_seg}%F{#444444}@%f%F{#cc0000}%m%f %F{#ffbf00}%~%f ${git_seg}"
 
   # set bottom line color — %(?..) checks last exit code
   PROMPT="${bc}╰>>%f %(?.. %F{#ff4444}[%?]%f )"
