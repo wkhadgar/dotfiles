@@ -62,9 +62,10 @@
     "window-rewrite-default": "",
     "window-rewrite": {
       "discord": " ",
+      "title<✳ (.*)>": "",
       "title<.*nvim.*>": "",
       "chrome": "",
-      "firefox":"󰈹",
+      "(.*) — Mozilla Firefox":"󰈹",
       "title<.*github.*>": "",
       "kitty": "",
       "clion": "󰬊󰬓󰬐󰬖󰬕",
